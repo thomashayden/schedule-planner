@@ -1,0 +1,43 @@
+TThe idea of the scraper code is to simply request data from the NEU databases and compile it into an easily accessable database of classes. This info file is used to outline the methods of accessing data from the NEU databases, which don't have an actual API
+
+Ihe search page for NEU classes. What an average user uses.
+https://wl11gp.neu.edu/udcprod8/NEUCLSS.p_class_select
+
+When the form is submitted, it directs to this page, with added post data.
+https://wl11gp.neu.edu/udcprod8/NEUCLSS.p_class_search
+
+Full set of POST data the form sends when only narrowing the search by subject (in this case CS):
+sel_day:dummy
+STU_TERM_IN:201830
+sel_subj:dummy
+sel_attr:dummy
+sel_schd:dummy
+sel_camp:dummy
+sel_insm:dummy
+sel_ptrm:dummy
+sel_levl:dummy
+sel_instr:dummy
+sel_seat:dummy
+p_msg_code:You must select a term.
+sel_crn:
+sel_subj:CS
+sel_crse:
+sel_title:
+sel_attr:%
+sel_levl:%
+sel_schd:%
+sel_insm:%
+sel_from_cred:
+sel_to_cred:
+sel_camp:%
+sel_ptrm:%
+sel_instr:%
+begin_hh:0
+begin_mi:0
+begin_ap:a
+end_hh:0
+end_mi:0
+end_ap:a
+
+This is the mess of GET data that has the same of effect as the POST data (I don't know web that well and don't know why this works...)
+?SEL_DAY=dummy&STU_TERM_IN=201830&SEL_SUBJ=dummy&sel_attr=dummy&sel_schd=dummy&sel_camp=dummy&sel_insm=dummy&sel_ptrm=dummy&sel_levl=dummy&sel_instr=dummy&sel_seat=dummy&sel_attr=%25&sel_levl=%25&sel_schd=%25&sel_insm=%25&sel_camp=%25&sel_ptrm=%25&sel_instr=%25&begin_hh=0&begin_mi=0&begin_ap=a&end_hh=0&end_mi=0&end_ap=a&sel_crse=&sel_title=&sel_subj=ACCT
