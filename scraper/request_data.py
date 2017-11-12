@@ -52,4 +52,4 @@ def compile_url(subject):
 def get_html_for_subject(subject):
     return request_data(compile_url(subject))
 
-print(get_html_for_subject("ACCT"))
+#print(get_html_for_subject("ACCT"))
