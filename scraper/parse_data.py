@@ -17,17 +17,42 @@ def parse_header_string(hs):
     # hs_list[3] = Number of that Class Amongst other of the Same Class?
     return hs_list
 
+# Merge two dictionary's into one
+def merge_two_dicts(d1, d2):
+    z = d1.copy()
+    z.update(d2)
+    return z
+
 # Returns a list of information from the body of the class
 def pull_data_from_body(tr):
     rest_cont = tr.td
-    data = rest_cont.get_text().encode('ascii', 'ignore').split('\n')
-    for i in range(0,len(data)-1):
-        if data[i].isspace():
+    data = rest_cont.get_text().encode('ascii', 'ignore').split('\n') # Encode the content, and split it into an array of indiviudal lines
+    for i in range(0,len(data)-1): # Loop through the lines of data
+        if data[i].isspace(): # If a line of data is a completely blank, remove it
             del data[i]
-    while '' in data:
+    while '' in data: # Loop through and remove any completely empty lines
         data.remove('')
-    print(len(data))
-    print(data)
+    dict_of_info = {}
+    for line_number in range(0,len(data)-1):
+        dict_of_info = merge_two_dicts(dict_of_info, interpret_data_from_body(line_number, data[line_number])) 
+    print(len(dict_of_info)) # Print how many lines of data there is. Only for debugging purposes
+    print(dict_of_info) # Also print the data. Also for debugging
+
+def interpret_data_from_body(num,value):
+    if num is 0:
+        # Always the associated term
+        return {value.split(":")[0] : value.split(":").pop(0)}
+    elif num is 1:
+        # Always the levels
+        return {value.split(":")[0] : value.split(":").pop(0)}
+    elif num is 2:
+        # Always attributes
+        return {value.split(":")[0] : value.split(":").pop(0)}
+    else:
+        # Anything else at the moment
+        tmp = {}
+        tmp[num] = [value]
+        return tmp
 
 bs_html = BeautifulSoup(get_html_for_subject("CS"), 'lxml')
 
