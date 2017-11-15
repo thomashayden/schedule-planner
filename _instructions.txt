@@ -1,0 +1,5 @@
+Built on Python 2
+
+Requirements:
+BeautifulSoup 4
+sudo apt install python-bs4
